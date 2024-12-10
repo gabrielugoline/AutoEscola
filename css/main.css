@@ -1,0 +1,890 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800,900|Roboto:400,700&display=swap");
+/* RESET AND INITIAL CONFIGURATION */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+}
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 0.8rem;
+}
+
+a {
+  text-decoration: none;
+  color: #020202;
+}
+
+i {
+  height: 100%;
+  border: none;
+  outline: none;
+}
+
+/******************************************* UTILITY *******************************************/
+.container {
+  max-width: 110rem;
+  margin: 0 auto;
+}
+
+.heading-primary {
+  font-size: 6.2rem;
+  font-weight: 900;
+  letter-spacing: 0.18rem;
+  line-height: 1.1;
+  color: #ffffff;
+  text-shadow: 0.1rem 0 0.5rem rgba(0, 0, 0, 0.4);
+}
+
+.heading-primaryy {
+  font-size: 6.2rem;
+  font-weight: 900;
+  letter-spacing: 0.18rem;
+  line-height: 1.1;
+  color: #232c3b;
+  text-shadow: 0.1rem 0 0.5rem rgba(0, 0, 0, 0.4);
+}
+
+.heading-secondary {
+  font-size: 4rem;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #232c3b;
+  letter-spacing: 0.2rem;
+  text-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.3);
+}
+
+.sub-heading {
+  font-size: 2rem;
+  letter-spacing: 0.15rem;
+  color: #232c3b;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.8rem;
+  color: #f5f5f5;
+  letter-spacing: 0.12rem;
+  margin-bottom: 3.2rem;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+  color: #ffffff;
+  background: #ff0000;
+  padding: 1.2rem 2rem;
+  margin: 0.5rem 0;
+  border: none;
+  outline: none;
+  border-radius: 3rem; /* Botão bem arredondado */
+  cursor: pointer;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: #ff0000; /* Cor alternativa ao passar o mouse */
+  color: #ffffff; /* Mantém o texto destacado */
+  transform: translateY(-0.4rem) scale(1.05); /* Efeito de movimento e leve aumento */
+  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.5);
+}
+
+.btn:active {
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.8);
+}
+
+.btn::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  background: #ffffff; /* Destaque da barra */
+  transition: width 0.3s ease-in-out;
+  margin: 0 auto;
+}
+
+.btn:hover::after {
+  width: 80%; /* Barra de destaque ao passar o mouse */
+}
+
+
+.to-top {
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  font-size: 5rem;
+  color: #232c3b;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.to-top:hover {
+  color: #284390;
+  transform: translateY(1px);
+  cursor: pointer;
+}
+/******************************************* header *******************************************/
+.top-bar {
+  min-height: 15rem;
+  background: linear-gradient(180deg, rgba(210, 194, 205, 0.33), #fff);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* bordar somente para visualizar o fim do container */
+  /* border-bottom: 3px solid tomato; */
+}
+
+.top-bar .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.top-bar .logo img {
+  display: inline-block;
+  max-width: 15rem;
+  min-height: 15rem;
+  margin-right: 1rem;
+}
+.top-bar .logo h2 {
+  font-size: 4rem;
+  color: #020202;
+  font-weight: 800;
+}
+
+/* Contêiner de contatos e horários */
+.top-bar .contact-phone, 
+.top-bar .office-hours {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Espaçamento entre ícone e texto */
+  margin-bottom: 15px; /* Espaçamento entre os blocos */
+  transition: all 0.3s ease;
+}
+
+/* Ícones de telefone e horário */
+.top-bar .contact-phone i, 
+.top-bar .office-hours i {
+  font-size: 2.9rem; /* Tamanho ajustado para maior harmonia */
+  padding: 8px; /* Espaçamento interno do ícone */
+  color: #232c3b;
+  transition: all 0.3s ease;
+}
+
+/* Ajuste no ícone de horário */
+.top-bar .office-hours i {
+  font-size: 2.9rem; /* Tamanho ligeiramente maior para destaque */
+}
+
+/* Links de contato */
+.top-bar .contact-phone a {
+  font-weight: bold;
+  color: #1a1a19;
+  letter-spacing: 0.1rem; /* Reduzido para melhor legibilidade */
+  margin-left: 5px; /* Menor espaçamento após o ícone */
+  transition: all 0.3s ease;
+  text-decoration: none; /* Remove sublinhado padrão */
+}
+
+/* Efeito ao passar o mouse */
+.top-bar .contact-phone i:hover, 
+.top-bar .office-hours i:hover {
+  color: #ff0000; /* Cor do ícone ao passar o mouse */
+  transform: scale(1.15); /* Aumenta o tamanho do ícone suavemente */
+}
+
+.top-bar .contact-phone a:hover {
+  color: #ff0000; /* Cor do link ao passar o mouse */
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
+
+/* Tornar ícones e textos clicáveis */
+.top-bar .contact-phone i, 
+.top-bar .office-hours i,
+.top-bar .contact-phone a, 
+.top-bar .office-hours span {
+  cursor: pointer; /* Indica que é clicável */
+}
+
+/* Texto de horários */
+.top-bar .office-hours span {
+  display: block;
+  color: #1a1a19;
+  letter-spacing: 0.1rem; /* Harmoniza com o link de contato */
+  font-weight: bold;
+  font-size: 1.5rem; /* Define um tamanho consistente */
+}
+
+
+/******************************************* NAVBAR *******************************************/
+
+.navbar {
+  background: #ffffff;
+  padding: 0 8%;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar ul li a {
+  display: block;
+  color: #232c3b;
+  letter-spacing: 0.15rem;
+  padding: 2rem;
+  text-transform: uppercase;
+  text-decoration: none; /* Remove sublinhado padrão */
+  transition: all 0.3s ease-in-out; /* Transição suave para hover */
+}
+
+.navbar ul li:hover {
+  background: #232c3b; /* Fundo mais escuro */
+}
+
+.navbar ul li a:hover {
+  color: #ffffff; /* Texto muda para branco ao passar o mouse */
+  transform: scale(1.05); /* Texto levemente ampliado */
+  font-weight: bold; /* Torna o texto mais marcante */
+}
+
+.navbar ul li a::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #ff0000; /* Barra de destaque */
+  transition: width 0.3s ease-in-out;
+  margin: 0 auto; /* Centraliza a barra */
+}
+
+.navbar ul li a:hover::after {
+  width: 80%; /* Expande a barra ao passar o mouse */
+}
+
+
+/******************************************* reponsive menu icon *******************************************/
+
+.navbar .burguer {
+  cursor: pointer;
+  display: none;
+  padding: 2rem;
+}
+
+.navbar .burguer div {
+  height: 0.3rem;
+  width: 2.5rem;
+  background: #f4f4f4;
+  margin: 0.5rem;
+}
+
+.navbar .social i {
+  font-size: 2.4rem;
+  color: #232c3b;
+  cursor: pointer;
+}
+
+.navbar .social i:hover {
+  color: #ff0000;
+}
+
+/******************************************* HERO *******************************************/
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    url(../img/a.jpeg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.hero .container {
+  height: 100%;
+}
+.hero-content {
+  padding: 0 1.2rem;
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.price-title {
+  font-size: 1.9rem;
+  color: #f6f6f6;
+  letter-spacing: 0.16rem;
+  font-weight: 700;
+}
+
+.price-value {
+  font-family: "Montserrat", sans-serif;
+  font-size: 5.5rem;
+  color: #ff0000;
+  letter-spacing: 0.2rem;
+  font-weight: 800;
+  text-shadow: 0.1rem 0 0.5rem rgba(0, 0, 0, 0.4);
+  margin: 0.6rem 0;
+}
+
+/******************************************* features and services ******************************************/
+
+.features,
+.services {
+  height: 60vh;
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.features-box,
+.services-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6rem;
+}
+
+.services-buttons {
+  display: flex;
+  justify-content: center;
+  padding-top: 6rem;
+}
+
+.services-title {
+  padding-top: 2rem;
+}
+
+.features-item,
+.services-item {
+  margin: 0 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  text-align: center;
+}
+
+.features-item i,
+.services-item i {
+  display: block;
+  font-size: 7rem;
+  padding-bottom: 1.7rem;
+  transition: all 0.5s;
+}
+
+.features-item i:hover,
+.services-item i:hover {
+  color: #273d63;
+  transform: scale(1.2);
+}
+
+/******************************************* testimonials *******************************************/
+
+.testimonials {
+  height: auto;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/Design\ sem\ nome.png);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 4rem;
+}
+
+.testimonials-title {
+  margin-bottom: 4rem;
+  text-align: center;
+  color: #fff;
+  font-size: 2.4rem;
+  font-weight: bold;
+}
+
+.testimonials-boxes {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3rem;
+  padding: 0 3rem;
+  width: 100%;
+  animation: slideTestimonials 20s linear infinite; /* A animação será constante em todas as resoluções */
+}
+
+.testimonial-item {
+  flex: 0 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.testimonial-box {
+  padding: 2rem;
+  font-size: 1.6rem;
+  color: #f4f4f4;
+  background-color: #020202cc;
+  border-radius: 0.5rem;
+  margin: 2rem 1rem;
+  position: relative;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-box:hover {
+  background-color: #232c3b;
+}
+
+.testimonial-author {
+  font-size: 1.8rem;
+  letter-spacing: 0.15rem;
+  color: #fff;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.rating {
+  margin-bottom: 1rem;
+}
+
+.star {
+  color: #f9a825;
+  font-size: 1.8rem;
+}
+
+.testimonial-text {
+  font-style: italic;
+  margin: 1rem 0;
+}
+
+@keyframes slideTestimonials {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .testimonials-title {
+    font-size: 20px;
+  }
+
+  .testimonial-text {
+    font-size: 14px;
+  }
+
+  .testimonial-author {
+    font-size: 14px;
+  }
+
+  .testimonials-boxes {
+    gap: 1.5rem; /* Ajustei o espaçamento */
+  }
+
+  .testimonial-item {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonials-title {
+    font-size: 18px;
+  }
+
+  .testimonial-text {
+    font-size: 14px;
+  }
+
+  .testimonial-author {
+    font-size: 13px;
+  }
+
+  .testimonials-boxes {
+    gap: 1rem; /* Ajustei o espaçamento */
+  }
+
+  .testimonial-item {
+    padding: 6px;
+  }
+}
+
+
+
+/******************************************* aprovados *******************************************/
+
+.aprovados {
+  background-color: #232c3b; /* Azul escuro */
+  color: #fff;
+  padding: 6rem 2rem; /* Aumentei o padding da área azul */
+  text-align: center;
+}
+
+.aprovados-title {
+  font-size: 3.5rem; /* Aumentei o tamanho do título */
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.aprovados-description {
+  font-size: 1.6rem; /* Aumentei o tamanho da descrição */
+  margin-bottom: 2.5rem;
+}
+
+.aprovados-gallery {
+  display: flex;
+  gap: 1.5rem;
+  padding-bottom: 10px;
+  overflow-x: hidden;
+}
+
+.aprovados-item {
+  position: relative;
+  overflow: hidden; /* Garante que o fundo vermelho não ultrapasse os limites da imagem */
+  max-width: 500px; /* Limita o tamanho das imagens */
+  height: 300px; /* Definindo altura fixa para a imagem */
+}
+
+.aprovados-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra o espaço da área sem distorção */
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.aprovados-item img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.aprovados-item::after {
+  content: "Aprovado!"; /* Texto "Aprovado" sobre a imagem */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  font-size: 4rem; /* Tamanho maior do texto */
+  font-weight: bold;
+  transform: rotate(-45deg); /* Deixa o texto na diagonal */
+  transform-origin: center; /* Garante que a rotação seja centrada */
+  opacity: 0; /* Inicialmente o texto fica invisível */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.aprovados-item:hover::after {
+  opacity: 1; /* Torna o texto visível ao passar o mouse */
+}
+
+.aprovados-gallery::-webkit-scrollbar {
+  display: none; /* Remove a barra de rolagem */
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+  .aprovados-title {
+    font-size: 2.8rem;
+  }
+
+  .aprovados-description {
+    font-size: 1.6rem;
+  }
+
+  .aprovados-gallery {
+    gap: 1.5rem;
+    padding-bottom: 20px;
+  }
+
+  .aprovados-item {
+    max-width: 300px; /* Ajustei o tamanho das imagens para se ajustar melhor em dispositivos médios */
+    height: 250px;
+  }
+
+  .aprovados-item img {
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 480px) {
+  .aprovados-gallery {
+    gap: 1rem;
+  }
+
+  .aprovados-title {
+    font-size: 2.2rem;
+  }
+
+  .aprovados-description {
+    font-size: 1.4rem;
+  }
+
+  .aprovados-item {
+    max-width: 280px; /* Imagens menores em dispositivos móveis */
+    height: 220px; /* Ajusta a altura das imagens */
+  }
+
+  .aprovados-item img {
+    object-fit: cover;
+  }
+}
+
+/* Estilo para o modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* Fundo escuro com transparência */
+  padding-top: 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.modal-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+
+
+
+
+/******************************************* localization *******************************************/
+.localization {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  padding: 4rem;
+  background-color: #ffffff; /* Fundo branco */
+}
+
+
+.localization-map {
+  width: 50%;
+  height: 100%;
+  margin-right: 5rem;
+  flex-shrink: 2;
+}
+
+.localization-info {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.localization-info .localization-title {
+  font-size: 3.7rem;
+  width: 100%;
+}
+
+.localization-info .localization-item {
+  width: 40%;
+  padding: 2rem 0;
+  margin-right: 3rem;
+}
+
+.localization-info .localization-item-full {
+  width: 100%;
+  flex-grow: 2;
+}
+.localization-info .localization-item p {
+  font-size: 1.6rem;
+  color: #232c3b;
+  letter-spacing: 0.1rem;
+  text-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.2);
+  margin-bottom: 1rem;
+}
+
+/******************************************* footer *******************************************/
+/* Reset para o footer */
+footer {
+  background-color: #232c3b; /* Azul escuro */
+  color: white;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-logo-img {
+  max-width: 150px; /* Logo com tamanho ajustado */
+  height: auto;
+}
+
+.footer-contact, .footer-social, .footer-menu {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-contact h3, .footer-social h3, .footer-menu h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.footer-contact p, .footer-menu ul {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.footer-menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-menu li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-menu a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-menu a:hover {
+  text-decoration: underline;
+}
+
+.footer-social-link {
+  display: inline-block;
+  color: #fff;
+  font-size: 25px;
+  transition: color 0.3s ease-in-out; /* Animação suave para a cor */
+}
+
+.footer-social-link:hover {
+  color: #ff0000; /* Cor vermelha ao passar o mouse */
+}
+
+.footer-social-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.footer-map-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.footer-map-link:hover {
+  text-decoration: underline;
+}
+
+/* Botão Agende sua aula */
+.footer-schedule-btn {
+  background-color: #e60000;
+  color: #fff;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.footer-schedule-btn:hover {
+  background-color: #cc0000;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1rem;
+}
+
+.footer-bottom p {
+  margin-bottom: 0.5rem;
+}
+
+.footer-bottom a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease; /* Animação para cor e transformação */
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+  color: #ffffff; /* Cor vermelha ao passar o mouse */
+  transform: scale(1.1); /* Aumenta o tamanho do botão suavemente */
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+}
